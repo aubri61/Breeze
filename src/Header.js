@@ -7,6 +7,10 @@ function Header() {
     return (
         <div className="header">
             <div className="title">breeze</div>
+            <div>
+                <div>MATCH</div>
+                <div>CHANNEL</div>
+            </div>
         </div>
     )
 }

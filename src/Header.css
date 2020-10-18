@@ -1,13 +1,16 @@
 .header {
-    background-color: #B1DFE2;
-    height: 100px;
+    /* background-color: #B1DFE2; */
+    background:linear-gradient(#55bbdd, transparent);
+    /* background:linear-gradient(#B1dfe2, transparent); */
+    /* background:linear-gradient(150deg,#B1DFE2, #5BD5DB); */
+    height: 150px;
     align-items: center;
 }
 
 .title {
     color: white;
     align-self: center;
-    font-size: 80px;
-    font-family: playball;
-    margin-left: 100px;
+    font-size: 90px;
+    font-family: 'Sansita Swashed';
+    margin-left: 80px;
 }

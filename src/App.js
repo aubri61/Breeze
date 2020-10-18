@@ -1,9 +1,14 @@
 import React from 'react';
 import Header from './Header';
+import Swipe from './Swipe';
+
 
 function App() {
   return (
-    <Header />
+    <div>
+      <Header />
+      <Swipe />
+    </div>
   );
 }
 
