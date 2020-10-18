@@ -1,0 +1,13 @@
+.header {
+    background-color: #B1DFE2;
+    height: 100px;
+    align-items: center;
+}
+
+.title {
+    color: white;
+    align-self: center;
+    font-size: 80px;
+    font-family: playball;
+    margin-left: 100px;
+}
