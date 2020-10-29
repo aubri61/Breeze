@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {Component, useState} from 'react';
 import TinderCard from 'react-tinder-card';
 import profilePic from './profilePic.jpg';
-import people1 from './people1.jpg';
-import people2 from './people2.jpg';
-import people3 from './people3.jpg';
+import people1 from './바디1.jpg';
+import people2 from './바디2.jpg';
+import people3 from './바디3.jpg';
+import Avatar from '@material-ui/core/Avatar'
+import SwipeButtons from './SwipeButtons';
 
 
 import location from './location.png';
@@ -22,21 +24,29 @@ function Swipe() {
 
     const [people, setPeople] = useState([
         {
-            name: "박보검",
-            image: people1,
-            age: 24
-        },
-
-        {
-            name: "채영대",
+            name: "언더아머 단속반",
             image: people2,
-            age: 20
+            age: 24,
+            comment: "같이 헬스장 다니실 여성분 찾습니다 :)",
+            hobby : ["야구", "헬스", "축구", "농구", "바디프로필", "고양이"]
         },
 
         {
-            name: "오영석",
+            name: "연희동 헬창",
+            image: people1,
+            comment: "같이 헬스장 다니실 여성분 찾습니다 :)",
+            age: 20,
+            hobby : ["야구", "헬스", "축구", "농구", "바디프로필", "고양이"]
+
+        },
+
+        {
+            name: "단백질 킬러",
             image: people3,
-            age: 27
+            comment: "같이 헬스장 다니실 여성분 찾습니다 :)",
+            age: 27,
+            hobby : ["야구", "헬스", "축구", "농구", "바디프로필", "고양이"]
+
         },
     ]);
 
@@ -54,7 +64,8 @@ function Swipe() {
             <div className="profile">
                 {/* <img src={profilePic} alt="img" /> */}
                 <div className="profile_row">
-                    <div className="profile_pic"></div>
+                    <Avatar className="profile_pic" alt="dd" src={profilePic} style={{width: "150px", height: "150px"}} />
+                    {/* <div className="profile_pic"></div> */}
                     <div className="profile_info">
                         <div className="profile_name">{profile.name}</div>
                         <div className="profile_age">{profile.age}</div>
@@ -68,7 +79,7 @@ function Swipe() {
 
                 <div className="profile_hobby">
                     {profile.hobby.map(hob => (
-                        <div className="profile_hobbies">{hob}</div>
+                        <div className="profile_hobbies">{"#"+hob}</div>
                     ))}
                 </div>
                     
@@ -77,24 +88,65 @@ function Swipe() {
                 </div>
             </div>
             <div className="cards">
-                {people.map((person) => (
-                        <TinderCard
-                            className="swipe"
-                            key={person.name}
-                            preventSwipe={['up', 'down']}>
+                <div>
+                    {people.map((person) => (
+                            <TinderCard
+                                className="swipe"
+                                key={person.name}
+                                preventSwipe={['up', 'down']}>
 
-                            <div 
-                                style={{ backgroundImage: `url(${person.image})` }} 
-                                className="card" 
-                            >
-                                            
-                            </div>
-                            <h3>{person.name}</h3>
-                        </TinderCard>
-                    ))}
+                                <div 
+                                    style={{ backgroundImage: `url(${person.image})` }} 
+                                    className="card" 
+                                >
+                                                
+                                </div>
+                                <div style={{backgroundColor: "white", width: "400px"}}>
+                                    <div className="person_info">
+                                        <div className="person_name">{person.name}</div>
+                                        <div className="person_age">{person.age}</div>
+                                    </div>
+
+                                    <div className="person_comment">
+                                        {person.comment}
+                                    </div>
+
+                                    <div className="person_hobby">
+                                        {person.hobby.map(hob => (
+                                            <div className="person_hobbies">{hob}</div>
+                                        ))}
+                                    </div>
+
+                                    <div className="pics">
+                                        <Avatar className="pic" alt="dd" src={people1} variant="rounded"  style={{width: "100px", height: "100px", borderRadius: "20px"}} />
+                                        <Avatar className="pic" alt="dd" src={people2} variant="rounded"  style={{width: "100px", height: "100px", borderRadius: "20px"}} />
+                                        <Avatar className="pic" alt="dd" src={people3} variant="rounded"  style={{width: "100px", height: "100px", borderRadius: "20px"}} />
+    {/*                                      
+                                        <div className="pic"></div>
+                                        <div className="pic"></div>
+                                        <div className="pic"></div> */}
+                                                                
+                                    </div>
+
+                                   
+
+                                    <div className="person_location">
+                                        <img width="25px" height="25px" src={location} alt="loc"></img>
+                                        <div className="person_location_text">서울시 서대문구 연희동</div>
+                                    </div>
+                                </div>
+                                
+                            </TinderCard>
+                        ))}
+                    </div>
+                    <div style={{position: "absolute", right: "45vh", bottom: "10vh"}}>
+                        <SwipeButtons />
+                    </div>
             </div>
+            
         </div>
     )
 }
+
 
 export default Swipe;

@@ -7,9 +7,9 @@ function Header() {
     return (
         <div className="header">
             <div className="title">breeze</div>
-            <div>
-                <div>MATCH</div>
-                <div>CHANNEL</div>
+            <div className="nav">
+                <div className="match">MATCH</div>
+                <div className="channel">CHANNEL</div>
             </div>
         </div>
     )

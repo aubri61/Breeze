@@ -1,16 +1,43 @@
 .header {
-    /* background-color: #B1DFE2; */
-    background:linear-gradient(#55bbdd, transparent);
+    /* background-color: #55bbdd; */
+    /* background:linear-gradient(#55bbdd, transparent); */
+    /* background:linear-gradient(#33a5da, transparent); */
+
     /* background:linear-gradient(#B1dfe2, transparent); */
     /* background:linear-gradient(150deg,#B1DFE2, #5BD5DB); */
     height: 150px;
     align-items: center;
+    flex-direction: row;
+    display: flex;
+    border-bottom: 1px solid #d8d8d8;
 }
 
 .title {
-    color: white;
+    color: black;
     align-self: center;
     font-size: 90px;
     font-family: 'Sansita Swashed';
     margin-left: 80px;
+    flex: 5;
+}
+
+.nav {
+    display: flex;
+    flex: 2;
+    margin-bottom: -50px;
+    /* justify-content: first baseline; */
+}
+
+.match {
+    flex: 1;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: -100px;
+}
+
+.channel {
+    flex: 1;
+    color: black;
+    font-size: 20px;
 }
