@@ -5,6 +5,7 @@ import Home from './Home';
 import Channel from './Channel';
 import Chatscreen from "./Chatscreen";
 import Chats from './Chats';
+import Information from './Information';
 
 import {
   BrowserRouter as Router,
@@ -36,6 +37,11 @@ function App() {
             <Header />
             <Swipe />
           </Route>
+
+          <Route path="/information">
+            <Header />
+            <Information />
+            </Route>
 
           <Route path="/">
             <Header />
