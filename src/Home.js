@@ -1,4 +1,6 @@
 import React, {Component, Fragment, useState} from 'react';
+import {Link,  } from "react-router-dom";
+
 
 import './Home.css'
 
@@ -17,6 +19,9 @@ function Home() {
                 <h1>한 번의 터치, <br /> 편리한 매칭</h1>
                 <h3>간단한 터치만으로 마음에 쏙 드는 운동메이트를 찾을 수 있어요. <br />원하는 운동메이트와 함께 운동을 즐겨요! </h3>
             </div>
+            <Link to="/match" style={{ textDecoration: 'none' }}>
+                <div className="button">매칭 하러 가기</div>
+            </Link>
         </Fragment>
     )
 }

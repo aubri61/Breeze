@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import TinderCard from 'react-tinder-card';
 import profilePic from './profilePic.jpg';
 import people1 from './바디1.jpg';
@@ -7,35 +7,15 @@ import people3 from './바디3.jpg';
 import Avatar from '@material-ui/core/Avatar'
 import SwipeButtons from './SwipeButtons';
 import database from './firebase';
+
+
+
 import location from './location.png';
 
 import './Swipe.css';
 
 
-import IconButton from "@material-ui/core/IconButton";
-import ReplayIcon from "@material-ui/icons/Replay";
-import CloseIcon from "@material-ui/icons/Close";
-import StarRateIcon from "@material-ui/icons/StarRate";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import FlashOnIcon from "@material-ui/icons/FlashOn";
-import { Icon } from '@material-ui/core';
-
-
 function Swipe() {
-
-    // const [current, setCurrent]=useState([]);
-    const [people, setPeople]=useState([]);
-
-    useEffect(() => {
-        const unsubscribe=database.collection('people').onSnapshot(snapshot => (
-            setPeople(snapshot.docs.map(doc => doc.data()))
-        ));
-        return () => {
-            unsubscribe();
-        }
-    }, [people]);
-
-
     const profile={
         name: "야옹이",
         image: profilePic,
@@ -44,22 +24,19 @@ function Swipe() {
         comment: "저랑 운동 같이 하실 몸 좋은 오빠 찾아용 @ya_ong2"
     };
 
-    const swiped=(dir, person)  => {
-        if (dir=="right") {
-            console.log("right")
-            addLikes(person)
-        } else {
-            console.log("left")
-        }
-    }
+    const [people, setPeople]=useState([]);
 
-    const addLikes=(person) => {
-        database.collection("likes").add({
-            person, avail:true
-        }).then( function(docRef) {
-            console.log("ID", docRef.id);
-        })
-    }
+    useEffect(() => {
+
+        const unsubscribe=database.collection('people').onSnapshot(snapshot => (
+            setPeople(snapshot.docs.map((doc) => ({name:doc.name, age:doc.age, location:doc.location, comment:doc.comment, image:doc.image, interest:doc.interest })))
+        ));
+
+        return () => {
+            unsubscribe();
+        }
+
+    }, [people])
 
     // console.log(people[0])
 
@@ -128,19 +105,17 @@ function Swipe() {
                     {profile.comment}
                 </div>
             </div>
-
             <div className="cards">
                 
                 <div>
+                    <div>
+                        {people}
+                    </div>
                     {people.map((person) => (
-                        <TinderCard
-                        className="swipe"
-                        key={person.name}
-                        preventSwipe={['up', 'down']}
-                        onSwipe={(dir) => swiped(dir, person)}
-                        >
-                        {/* {setCurrent(person)}
-                        {console.log(current)} */}
+                            <TinderCard
+                                className="swipe"
+                                key={person.name}
+                                preventSwipe={['up', 'down']}>
 
                                 <div 
                                     style={{ backgroundImage: `url(${person.image})` }} 
@@ -158,39 +133,33 @@ function Swipe() {
                                         {person.comment}
                                     </div>
 
-                                    {/* <div className="person_hobby">
+                                    <div className="person_hobby">
                                         {person.interest.map(hob => (
                                             <div className="person_hobbies">{hob}</div>
                                         ))}
-                                    </div> */}
+                                    </div>
 
                                     <div className="pics">
                                         <Avatar className="pic" alt="dd" src={people1} variant="rounded"  style={{width: "100px", height: "100px", borderRadius: "20px"}} />
                                         <Avatar className="pic" alt="dd" src={people2} variant="rounded"  style={{width: "100px", height: "100px", borderRadius: "20px"}} />
-                                        <Avatar className="pic" alt="dd" src={people3} variant="rounded"  style={{width: "100px", height: "100px", borderRadius: "20px"}} />                 
+                                        <Avatar className="pic" alt="dd" src={people3} variant="rounded"  style={{width: "100px", height: "100px", borderRadius: "20px"}} />
+                                                                
                                     </div>
 
+                                   
                                     <div className="person_location">
                                         <img width="25px" height="25px" src={location} alt="loc"></img>
                                         <div className="person_location_text">{person.location}</div>
                                     </div>
                                 </div>
+                                
                             </TinderCard>
                         ))}
 
                     </div>
-                    {/* <div className="swipeButtons" style={{position: "absolute", right: "45vh", bottom: "10vh"}}> */}
-                    {/* <div className="swipeButtons">
-                        <IconButton className="swipeButtons__left">
-                            <CloseIcon fontSize="large"/>
-                        </IconButton>
-                        <IconButton className="swipeButtons__right">
-                            <FavoriteIcon fontSize="large"/>
-                        </IconButton>
-
-                        {/* <SwipeButtons /> */}
-                    {/* </div> */} 
-
+                    <div style={{position: "absolute", right: "45vh", bottom: "10vh"}}>
+                        <SwipeButtons />
+                    </div>
             </div>
             
         </div>

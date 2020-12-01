@@ -14,23 +14,21 @@ import { Icon } from '@material-ui/core';
 function SwipeButtons() {
     return (
         <div className="swipeButtons">
-            <IconButton className="swipeButtons__repeat">
+            {/* <IconButton className="swipeButtons__repeat">
                 <ReplayIcon fontSize="large" />
-            </IconButton>
-
+            </IconButton> */}
             <IconButton className="swipeButtons__left">
                 <CloseIcon fontSize="large"/>
             </IconButton>
-            <IconButton className="swipeButtons__start">
+            {/* <IconButton className="swipeButtons__start">
                 <StarRateIcon fontSize="large"/>
-            </IconButton>
+            </IconButton> */}
             <IconButton className="swipeButtons__right">
                 <FavoriteIcon fontSize="large"/>
             </IconButton>
-            <IconButton className="swipeButtons__lightning">
+            {/* <IconButton className="swipeButtons__lightning">
                 <FlashOnIcon fontSize="large"/>
-            </IconButton>
-
+            </IconButton> */}
         </div>
     )
 }
