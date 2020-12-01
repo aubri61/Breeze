@@ -23,21 +23,30 @@
 
 .nav {
     display: flex;
-    flex: 2;
-    margin-bottom: -50px;
-    /* justify-content: first baseline; */
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto 0;
+    margin-left: 500px;
+    font-size: 25px;
+
 }
 
 .match {
     flex: 1;
     color: black;
-    font-size: 20px;
     font-weight: 700;
-    margin-right: -100px;
 }
 
 .channel {
     flex: 1;
     color: black;
-    font-size: 20px;
+    font-weight: 700;
+}
+
+.chat {
+    flex: 1;
+    color: black;
+    font-weight: 700;
+    margin-right: 400px
 }
